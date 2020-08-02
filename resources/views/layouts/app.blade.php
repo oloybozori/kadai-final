@@ -11,7 +11,9 @@
     <title>タイトル</title>
   </head>
   <body>
-    <header>ヘッダー</header>
+    <header>
+      <a href="/">ヘッダー</a>
+    </header>
     <div id="main-wrapper" class="row mt-3">
         <div id="main-content" class="col-sm-8">
           メイン<br>
@@ -19,6 +21,7 @@
         </div>
         <div id="sidebar" class="col-sm-4">
           サイドバー
+            @include('commons.side_login')
             @include('commons.side_menu')
         </div>
     </div>  
