@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'PostsController@index');
 
 // User registration
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -27,5 +24,10 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
    Route::resource('users', 'UsersController', ['only' => ['show']]); 
+   Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+   Route::group(['prefix' => 'post{id}'], function () {
+      Route::post('like', 'LikesController@store')->name('likes.like');
+      Route::delete('unlike', 'LikesController@destroy')->name('likes.unlike');
+   });
 });
 

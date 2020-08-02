@@ -13,10 +13,17 @@
   <body>
     <header>
       <a href="/">ヘッダー</a>
+      <div>New Post</div>
+      @if(Auth::check())
+      Log in by {{ Auth::user()->name }}
+      @endif
     </header>
     <div id="main-wrapper" class="row mt-3">
         <div id="main-content" class="col-sm-8">
           メイン<br>
+          {{-- エラーメッセージ --}}
+          @include('commons.error_messages')
+    
           @yield('content')
         </div>
         <div id="sidebar" class="col-sm-4">
