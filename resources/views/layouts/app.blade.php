@@ -19,7 +19,6 @@
         </div>
         <div id="sidebar" class="col-sm-4">
           サイドバー
-            @include('commons.login')
             @include('commons.side_menu')
         </div>
     </div>  

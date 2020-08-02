@@ -1,9 +1,10 @@
 @extends ('layouts.app')
 
 @section('content')
-
-
+    <div>
         <h1>Sign up</h1>
+    
+    </div>
 
     <div id="register">
         {!! Form::open(['route' => 'signup.post']) !!}

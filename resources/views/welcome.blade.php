@@ -1,6 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
-  indexページ
+  indexページ<br>
+  {!! link_to_route('signup.get', 'Sign up now!', [], []) !!}
 
 @endsection
