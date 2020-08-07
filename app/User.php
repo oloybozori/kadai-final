@@ -40,7 +40,7 @@ class User extends Authenticatable
 
 
     /**
-     * このユーザが所有する投稿。（ Micropostモデルとの関係を定義）
+     * このユーザが所有する投稿。（ Postモデルとの関係を定義）
      */
     public function posts()
     {
@@ -110,6 +110,13 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    // コメント
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }    
+    
     
     
 }

@@ -7,32 +7,65 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>タイトル</title>
   </head>
   <body>
-    <header>
-      <a href="/">ヘッダー</a>
-      <div>New Post</div>
-      @if(Auth::check())
-      Log in by {{ Auth::user()->name }}
-      @endif
-    </header>
-    <div id="main-wrapper" class="row mt-3">
-        <div id="main-content" class="col-sm-8">
-          メイン<br>
+    <div id="wrapper">
+      <header>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        {{-- トップページへのリンク --}}
+        <a class="navbar-brand" href="/">Website</a>
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav-bar">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+                @if (Auth::check())
+                    {{-- ユーザ一覧ページへのリンク --}}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                         <ul class="dropdown-menu dropdown-menu-right">
+                            {{-- ユーザ詳細ページへのリンク --}}
+                            <li class="dropdown-item">{!! link_to_route('users.show', 'My page', ['user' => Auth::id()]) !!}</li>
+                            <li class="dropdown-divider"></li>
+                            {{-- New Postへのリンク --}}
+                            <li class="dropdown-item">{!! link_to_route('posts.create', 'New Post') !!}</li>
+                            <li class="dropdown-divider"></li>
+                            {{-- ログアウトへのリンク --}}
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                        </ul>
+                    </li>
+                @else
+                    {{-- ユーザ登録ページへのリンク --}}
+                    <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
+                @endif
+            </ul>
+        </div>
+    </nav>
+        
+        
+
+      </header>
+      @section('top_page')
+      @show
+      
+      <div id="main-wrapper" class="row mt-3">
+
+        <div id="main-content" class="col-sm-9">
           {{-- エラーメッセージ --}}
           @include('commons.error_messages')
-    
           @yield('content')
         </div>
-        <div id="sidebar" class="col-sm-4">
-          サイドバー
-            @include('commons.side_login')
+        <div id="sidebar" class="col-sm-3">
             @include('commons.side_menu')
         </div>
-    </div>  
-    <footer class="mt-3">フッター</footer>
+      </div>  
+      <footer class="mt-3">©　2020 XXX</footer>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
