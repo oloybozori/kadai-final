@@ -15,8 +15,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at','desc')->paginate(3);
-        $regions = Region::orderBy('region', 'asc')->get();
-        $categories = Category::orderBy('category', 'asc')->get();
+        $regions = Region::orderBy('id', 'asc')->get();
+        $categories = Category::orderBy('id', 'asc')->get();
 
         
         return view('welcome', [

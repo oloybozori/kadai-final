@@ -55,7 +55,7 @@
       
       <div id="main-wrapper" class="row mt-3">
 
-        <div id="main-content" class="col-sm-9">
+        <div id="main-content" class="col-sm-9 mb-4">
           {{-- エラーメッセージ --}}
           @include('commons.error_messages')
           @yield('content')

@@ -8,16 +8,20 @@
 
 <div class="main_items">
   <h1>Regions</h1>
-  @foreach ($regions as $region)
-  <span>{{ link_to_route('regions.show', $region->region, ['region' => $region->id],[]) }}</span>
-  @endforeach
+  <ul class="top-lists">
+    @foreach ($regions as $region)
+    <li>{{ link_to_route('regions.show', $region->region, ['region' => $region->id],[]) }}</li>
+    @endforeach
+  </ul>
 </div>
 
 <div class="main_items">
   <h1>Categories</h1>
-  @foreach ($categories as $category)
-  <span>{{ link_to_route('categories.show', $category->category, ['category' => $category->id],[]) }}</span>
-  @endforeach
+  <ul class="top-lists">
+    @foreach ($categories as $category)
+    <li>{{ link_to_route('categories.show', $category->category, ['category' => $category->id],[]) }}</li>
+    @endforeach
+  </ul>
 </div>
   
 <div class="main_items">

@@ -10,7 +10,7 @@
 {{ Form::model($comments, ['route' => 'comments.store']) }}
 
     <div class="form-group">
-        {!! Form::label('comment', 'Title:') !!}
+        {!! Form::label('comment', 'Comment:') !!}
         {!! Form::textarea('comment', null, ['class' => 'form-control']) !!}
         {!! Form::hidden('user_id', Auth::user()->id) !!}
         {!! Form::hidden('post_id', $post->id) !!}

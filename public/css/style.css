@@ -64,7 +64,20 @@ h3 {
 }
 
 .main_items {
+    display: block;
+    width: 100%;
     margin-bottom: 30px;
+}
+
+.main-items. ul{
+    display: flex;
+    flex-direction: column;
+    max-height: 100px;
+}
+
+
+.main_items li{
+    display: block;
 }
 
 .post-view {
